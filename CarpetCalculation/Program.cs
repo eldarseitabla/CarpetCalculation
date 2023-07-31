@@ -12,18 +12,18 @@ namespace CarpetCalculation
     {
         static void Main(string[] args)
         {
-            Order carpetOrder = new Order();
+            Order order = new Order();
             do
             {
-                carpetOrder.Initialize();
-                carpetOrder.InputDetails();
-                carpetOrder.CalculateCost();
+                order.Initialize();
+                order.InputDetails();
+                order.CalculateCost();
 
-                Console.WriteLine($"Total Carpet Cost is {carpetOrder.TotalCost}");
+                Console.WriteLine($"Total Carpet Cost is {order.TotalCost}");
 
                 Console.Write("Do you require another Calculation? (yes/no): ");
-                carpetOrder.IsRepeatOrder = Console.ReadLine().ToLower() == "yes";
-            } while (carpetOrder.IsRepeatOrder);
+                order.IsRepeatOrder = Console.ReadLine().ToLower() == "yes";
+            } while (order.IsRepeatOrder);
         }
     }
 }
