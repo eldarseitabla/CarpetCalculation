@@ -17,60 +17,60 @@ namespace Carpet
         private const string ZONEND = "ND";
 
         // Properties
-        public decimal SquareMetres { get; private set; }
-        public decimal PricePerSqMetre { get; private set; }
-        public decimal TotalCost { get; private set; }
-        public bool IsExistingCustomer { get; private set; }
-        public int DeliveryCharge { get; private set; }
-        public string DeliveryZone { get; private set; }
+        public decimal squareMetres { get; private set; }
+        public decimal pricePerSqMetre { get; private set; }
+        public decimal totalCost { get; private set; }
+        public bool isExistingCustomer { get; private set; }
+        public int deliveryCharge { get; private set; }
+        public string deliveryZone { get; private set; }
         public bool IsRepeatOrder { get; set; }
 
         public void Initialize()
         {
-            SquareMetres = 0;
-            PricePerSqMetre = 0;
-            TotalCost = 0;
-            IsExistingCustomer = false;
-            DeliveryCharge = 0;
-            DeliveryZone = string.Empty;
+            squareMetres = 0;
+            pricePerSqMetre = 0;
+            totalCost = 0;
+            isExistingCustomer = false;
+            deliveryCharge = 0;
+            deliveryZone = string.Empty;
         }
 
         public void InputDetails()
         {
             Console.Write("Please enter number of square metres: ");
-            SquareMetres = decimal.Parse(Console.ReadLine());
+            squareMetres = decimal.Parse(Console.ReadLine());
 
             Console.Write("Please enter price per square metre: ");
-            PricePerSqMetre = decimal.Parse(Console.ReadLine());
+            pricePerSqMetre = decimal.Parse(Console.ReadLine());
 
             Console.Write("Are you an existing customer? (yes/no): ");
-            IsExistingCustomer = Console.ReadLine().ToLower() == "yes";
+            isExistingCustomer = Console.ReadLine().ToLower() == "yes";
 
             Console.Write($"Please enter delivery zone ({ZONESD}/{ZONEND}): ");
-            DeliveryZone = Console.ReadLine().ToUpper();
+            deliveryZone = Console.ReadLine().ToUpper();
         }
 
         public void CalculateCost()
         {
-            TotalCost = SquareMetres * PricePerSqMetre;
+            totalCost = squareMetres * pricePerSqMetre;
 
-            if (IsExistingCustomer)
+            if (isExistingCustomer)
             {
-                TotalCost *= DISCOUNT;
+                totalCost *= DISCOUNT;
             }
 
-            if (TotalCost <= THRESHOLD && DeliveryZone == ZONEND)
+            if (totalCost <= THRESHOLD && deliveryZone == ZONEND)
             {
-                TotalCost += ZONENDCHARGE;
-                DeliveryCharge = ZONENDCHARGE;
+                totalCost += ZONENDCHARGE;
+                deliveryCharge = ZONENDCHARGE;
             }
-            else if (TotalCost <= THRESHOLD && DeliveryZone == ZONESD)
+            else if (totalCost <= THRESHOLD && deliveryZone == ZONESD)
             {
-                TotalCost += ZONESDCHARGE;
-                DeliveryCharge = ZONESDCHARGE;
+                totalCost += ZONESDCHARGE;
+                deliveryCharge = ZONESDCHARGE;
             }
 
-            TotalCost += DeliveryCharge;
+            totalCost += deliveryCharge;
         }
     }
 }

@@ -19,7 +19,7 @@ namespace CarpetCalculation
                 order.InputDetails();
                 order.CalculateCost();
 
-                Console.WriteLine($"Total Carpet Cost is {order.TotalCost}");
+                Console.WriteLine($"Total Carpet Cost is {order.totalCost}");
 
                 Console.Write("Do you require another Calculation? (yes/no): ");
                 order.IsRepeatOrder = Console.ReadLine().ToLower() == "yes";
