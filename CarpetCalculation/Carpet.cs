@@ -17,6 +17,9 @@ namespace Carpet
         private const string ZONEND = "ND";
 
         // Properties
+        // { get; private set; } This is a common pattern when you want to
+        // make a property read-only to the outside world but still be able to
+        // modify it within the class.
         public decimal squareMetres { get; private set; }
         public decimal pricePerSqMetre { get; private set; }
         public decimal totalCost { get; private set; }
